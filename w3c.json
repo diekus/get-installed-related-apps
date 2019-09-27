@@ -1,3 +1,6 @@
  {
-,   "shortName":  "get-installed-related-apps"
+    "group":      ["80485"],
+    "contacts":   ["marcoscaceres"],
+    "shortName":  "get-installed-related-apps",
+     "repo-type":  "cg-report"
 }
