@@ -17,12 +17,15 @@ are installed on the current device.
 From an `async` function:
 
 ```js
-let listOfInstalledApps = await navigator.getInstalledRelatedApps();
+const listOfInstalledApps = await navigator.getInstalledRelatedApps();
 for (const app of listOfInstalledApps) {
   // These fields are specified by the Web App Manifest spec.
   console.log('platform:', app.platform);
   console.log('url:', app.url);
   console.log('id:', app.id);
+
+  // This field is provided by the UA.
+  console.log('version:', app.version);
 }
 ```
 

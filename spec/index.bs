@@ -1,0 +1,78 @@
+<pre class='metadata'>
+Title: Get Installed Related Apps API
+Shortname: get-installed-related-apps
+Level: 1
+Status: ED
+Group: wicg
+URL: https://wicg.github.io/get-installed-related-apps/spec/
+Editor: Rayan Kanso, Google, rayankans@google.com
+Abstract: The GetInstalledRelatedApps API allows web apps to detect if related native apps are installed on the current device.
+</pre>
+
+Introduction {#intro}
+=====================
+
+As the capabilities of the web grow, the functionality of web apps begins to match that of corresponding native apps. The situation of users having a web app and the corresponding native app both installed on the same device will become more common, and the feature sets of these apps will converge.
+
+It is important to allow apps to detect this situation to allow them to disable functionality that should be provided by the other app.
+
+## Example ## {#example}
+
+<div class="example">
+  <pre class="lang-js">
+    const installedApps = await navigator.getInstalledRelatedApps();
+    const nativeApp = installedApps.filter(app => app.id === 'com.example.myapp')[0];
+
+    if (nativeApp && doesVersionSendPushMessages(nativeApp.version)) {
+      // There's an installed native app that handles sending push messages.
+      // No need to do anything.
+      return;
+    }
+
+    // Create a push subscription.
+  </pre>
+
+    In the above example, |doesVersionSendPushMessages| is a developer-defined function.
+</div>
+
+Privacy Considerations {#privacy-considerations}
+================================================
+
+TODO.
+
+API {#api}
+==========
+
+## RelatedApplication ## {#related-application}
+
+<script type="idl">
+dictionary RelatedApplication {
+    required USVString platform;
+    USVString url;
+    DOMString id;
+    DOMString version;
+};
+</script>
+
+## Extensions to {{Navigator}} ## {#extensions-to-navigator}
+
+<script type="idl">
+[Exposed=Window]
+partial interface Navigator {
+  [SecureContext] Promise<RelatedApplication> getInstalledRelatedApps();
+};
+</script>
+
+<div dfn-for="Navigator">
+
+### {{Navigator/getInstalledRelatedApps()}} ### {#navigator-get-installed-related-apps}
+
+<div algorithm>
+  The <dfn method>getInstalledRelatedApps()</dfn> method, when invoked, runs these steps:
+
+  1. Let |promise| be [=a new promise=].
+  1. TODO
+  1. Return |promise|.
+
+</div>
+
