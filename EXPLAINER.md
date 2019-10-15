@@ -48,5 +48,11 @@ This feature only works with sites using HTTPS. This ensures that the website
 cannot be spoofed, and that the association between the site and application is
 valid.
 
+The association between the web app and its counterpart is bidirectional,
+meaning that the web app has to declare its association with the related app,
+and the related app has to declare its association with the web app. This
+prevents malicious websites from fingerprinting users and getting a list of
+their installed applications.
+
 The User Agent should return no installed applications when running in a privacy
 preserving mode, for example Incognito in Chrome or Private Browsing in Firefox.
