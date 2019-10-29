@@ -145,6 +145,11 @@ partial interface Navigator {
 <div algorithm>
   The <dfn method>getInstalledRelatedApps()</dfn> method, when invoked, runs these steps:
 
+  1. Let |relevantBrowsingContext| be the [=context object=]'s [=relevant settings object=]'s [=environment settings object/responsible browsing context=].
+  1. If |relevantBrowsingContext| is not a [=top-level browsing context=], then return [=a promise rejected with=] an {{InvalidStateError}} {{DOMException}}.
+
+        Issue: Should this restriction be removed? (<a href="https://github.com/WICG/get-installed-related-apps/issues/11">#11</a>)
+
   1. Let |promise| be [=a new promise=].
   1. Run the following steps [=in parallel=]:
       1. Let |manifest| and |manifestURL| be the results of [=obtaining the manifest=]. If this fails, [=resolve=] promise with an empty [=/list=] and abort these steps.
