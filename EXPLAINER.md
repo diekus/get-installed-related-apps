@@ -36,6 +36,30 @@ associations from applications to web applications.
 We can define relationships between a web application and other applications by
 using the "related_applications" member of the web application manifest.
 
+Example:
+```json
+{
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.example.app1",
+      "id": "com.example.app1",
+      "min_version": "2",
+      "fingerprints": [
+        {
+          "type": "sha256_cert",
+          "value": "92:5A:39:05:C5:B9:EA:BC:71:48:5F:F2"
+        }
+      ]
+    },
+    {
+      "platform": "itunes",
+      "url": "https://itunes.apple.com/app/example-app1/id123456789"
+    }
+  ]
+}
+```
+
 Each platform has its own method of verifying a relationship. In Android, the
 [Digital Asset Links](https://developers.google.com/digital-asset-links/v1/create-statement)
 system can be used to define an association between a website and an application.
