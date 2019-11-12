@@ -134,7 +134,7 @@ Each {{RelatedApplication}} represents an [=installed app=] that was matched wit
 <script type="idl">
 [Exposed=Window]
 partial interface Navigator {
-  [SecureContext] Promise<RelatedApplication> getInstalledRelatedApps();
+  [SecureContext] Promise<sequence<RelatedApplication>> getInstalledRelatedApps();
 };
 </script>
 
