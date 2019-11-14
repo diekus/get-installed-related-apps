@@ -2,7 +2,7 @@
 Title: Get Installed Related Apps API
 Shortname: get-installed-related-apps
 Level: 1
-Status: ED
+Status: CG-DRAFT
 Group: wicg
 URL: https://wicg.github.io/get-installed-related-apps/spec/
 Editor: Rayan Kanso, Google, rayankans@google.com
