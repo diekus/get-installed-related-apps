@@ -84,3 +84,17 @@ applications on a user's device.
 
 The User Agent should return no installed applications when running in a privacy
 preserving mode, for example Incognito in Chrome or Private Browsing in Firefox.
+
+# Abuse Considerations
+For websites that own native applications that generally come pre-installed on
+a platform, this API can be used as a privacy mode detector if the native app
+is found to be missing (albeit with a non-negligible false positive rate).
+User Agents are encouraged to keep track of how this API is being used,
+specifically for the few origins that own the native apps that are
+pre-installed on a specific platform.
+
+Another abuse concern is that web applications might use this API to drive
+users away from a web environment, to the native counterpart. Although this
+practice already exists in the wild, User Agent should be wary of this
+potential abuse vector. Note that this is why no installed applications must be
+returned when running in in a privacy preserving mode.
