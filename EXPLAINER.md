@@ -78,5 +78,9 @@ and the related app has to declare its association with the web app. This
 prevents malicious websites from fingerprinting users and getting a list of
 their installed applications.
 
+User Agents should also take timing side-channel attacks into account in their
+implementation, to avoid potential leaking of information about installed
+applications on a user's device.
+
 The User Agent should return no installed applications when running in a privacy
 preserving mode, for example Incognito in Chrome or Private Browsing in Firefox.
