@@ -78,9 +78,14 @@ and the related app has to declare its association with the web app. This
 prevents malicious websites from fingerprinting users and getting a list of
 their installed applications.
 
-User Agents should also take timing side-channel attacks into account in their
+User Agents should also take timing side channel attacks into account in their
 implementation, to avoid potential leaking of information about installed
-applications on a user's device.
+applications on a user's device. To remove the timing side channel,
+implementations could pursue several options. One is to delay resolution of the
+API call by a random, *but fixed per app*, delay. As long as the caller cannot
+predict, guess, or otherwise determine what the delay was, nor re-query many
+times to filter out the delay 'noise', the caller gains no timing side-channel
+information about the installation status of the app.
 
 The User Agent should return no installed applications when running in a privacy
 preserving mode, for example Incognito in Chrome or Private Browsing in Firefox.
