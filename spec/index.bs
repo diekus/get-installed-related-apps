@@ -6,7 +6,7 @@ Status: CG-DRAFT
 Group: wicg
 URL: https://wicg.github.io/get-installed-related-apps/spec/
 Editor: Rayan Kanso, Google, rayankans@google.com
-Abstract: The GetInstalledRelatedApps API allows web apps to detect if related native apps are installed on the current device.
+Abstract: The Get Installed Related Apps API allows web apps to detect if related native apps are installed on the current device.
 </pre>
 
 <pre class="link-defaults">
