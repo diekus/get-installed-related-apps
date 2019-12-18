@@ -40,7 +40,7 @@ It is important to allow apps to detect this situation to allow them to disable 
 <div class="example">
   <pre class="lang-js">
     const installedApps = await navigator.getInstalledRelatedApps();
-    const nativeApp = installedApps.filter(app => app.id === 'com.example.myapp')[0];
+    const nativeApp = installedApps.find(app => app.id === 'com.example.myapp');
 
     if (nativeApp && doesVersionSendPushMessages(nativeApp.version)) {
       // There's an installed native app that handles sending push messages.
