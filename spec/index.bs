@@ -103,7 +103,7 @@ Algorithms {#algorithms}
     1. [=list/For each=] |installedApp| in |installedApps|:
         1. If |relatedApp|'s {{ExternalApplicationResource/id}} is not equal to |installedApp|'s [=installed app/id=], and |relatedApp|'s {{ExternalApplicationResource/url}} is not equal to |installedApp|'s [=installed app/id=], [=continue=].
         1. Let |minVersion| be |relatedApp|'s {{ExternalApplicationResource/min_version}} if present, otherwise the empty string.
-        1. If |minVersion| is greater than |installedApp|'s [=installed app/version=], return null.
+        1. If |minVersion| is not the empty string and |minVersion| is greater than |installedApp|'s [=installed app/version=], return null.
             
             Note: `greater` is a platform-specific concept for ordering application versions. It does not have to be lexicographic order.
         1. Let |fingerprints| be |relatedApp|'s {{ExternalApplicationResource/fingerprints}} if present, otherwise an empty [=/list=].

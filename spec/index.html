@@ -1215,7 +1215,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
   <meta content="Bikeshed version c80088ef848c5e5446a2eaced80623027d194593" name="generator">
   <link href="https://wicg.github.io/get-installed-related-apps/spec/" rel="canonical">
-  <meta content="103e8779046347fe3ed5c29920a618fc57e4ab84" name="document-revision">
+  <meta content="ae6073fcf5f78d1d608445aec0c6f6f53b5c3a92" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1615,7 +1615,7 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
        <li data-md>
         <p>Let <var>minVersion</var> be <var>relatedApp</var>’s <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/appmanifest/#dom-externalapplicationresource-min_version" id="ref-for-dom-externalapplicationresource-min_version">min_version</a></code> if present, otherwise the empty string.</p>
        <li data-md>
-        <p>If <var>minVersion</var> is greater than <var>installedApp</var>’s <a data-link-type="dfn" href="#installed-app-version" id="ref-for-installed-app-version">version</a>, return null.</p>
+        <p>If <var>minVersion</var> is not the empty string and <var>minVersion</var> is greater than <var>installedApp</var>’s <a data-link-type="dfn" href="#installed-app-version" id="ref-for-installed-app-version">version</a>, return null.</p>
         <p class="note" role="note"><span>Note:</span> `greater` is a platform-specific concept for ordering application versions. It does not have to be lexicographic order.</p>
        <li data-md>
         <p>Let <var>fingerprints</var> be <var>relatedApp</var>’s <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/appmanifest/#dom-externalapplicationresource-fingerprints" id="ref-for-dom-externalapplicationresource-fingerprints">fingerprints</a></code> if present, otherwise an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list②">list</a>.</p>
