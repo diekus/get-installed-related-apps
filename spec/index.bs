@@ -25,6 +25,7 @@ spec: appmanifest; urlPrefix: https://www.w3.org/TR/appmanifest/
     type: dictionary; text: fingerprints; for:ExternalApplicationResource; url: dom-externalapplicationresource-fingerprints
     type: dfn; text: obtaining the manifest; url: obtaining
     type: dfn; text: processing the related_applications member; url: related_applications-member
+    type: dfn; text: platform; url: platform-member
     type: dictionary; text: related_applications; for:WebAppManifest; url: dom-webappmanifest-related_applications
 </pre>
 
@@ -68,7 +69,7 @@ Infrastructure {#infrastructure}
 
 ## Platform ## {#infra-platform}
 
-A <dfn>platform</dfn> is an OS-specific concept, which groups applications of the same class together. It is represented by a {{USVString}}.
+A [=platform=] is an OS-specific concept, which groups applications of the same class together. It is represented by a {{USVString}}.
 
 An OS has <dfn>installed apps</dfn>, a [=/map=] where the keys are [=platform=]s, and the values are [=/list=]s of [=installed app=]s.
 
