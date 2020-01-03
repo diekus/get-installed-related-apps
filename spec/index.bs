@@ -62,6 +62,8 @@ This feature only works in secure contexts. This ensures that the website cannot
 
 The association between the web app and its counterpart is bidirectional, meaning that the web app has to declare its association with the related app, and the related app has to declare its association with the web app. This prevents malicious websites from fingerprinting users and getting a list of their installed applications.
 
+The user agent MAY limit the number of related applications to be matched, to limit fingerprinting.
+
 The user agent MUST NOT return installed applications when running in a privacy preserving mode, for example Incognito in Chrome or Private Browsing in Firefox.
 
 Infrastructure {#infrastructure}
@@ -155,6 +157,11 @@ partial interface Navigator {
   1. Run the following steps [=in parallel=]:
       1. Let |manifest| and |manifestURL| be the results of [=obtaining the manifest=]. If this fails, [=resolve=] promise with an empty [=/list=] and abort these steps.
       1. Let |relatedApplications| be |manifest|'s {{WebAppManifest/related_applications}}.
+      1. Optionally:
+          1. Let |maxRelatedApps| be a user agent determined number.
+          1. If |relatedApplications|' [=list/size=] is greater than |maxRelatedApps|, truncate |relatedApplications| to a [=list/size=] of |maxRelatedApps|.
+
+          Note: This limits how many native applications a website can know are installed. The extra items need to be truncated so the same {{ExternalApplicationResource}}s are returned every time.
       1. Let |installedApps| be an empty [=/list=].
       1. [=list/For each=] |relatedApplication| in |relatedApplications|:
           1. Let |matchedApp| be the result of running [=match an installed app=] with |relatedApplication| and |manifestURL|.

@@ -87,7 +87,10 @@ predict, guess, or otherwise determine what the delay was, nor re-query many
 times to filter out the delay 'noise', the caller gains no timing side-channel
 information about the installation status of the app.
 
-The User Agent should return no installed applications when running in a privacy
+User Agents may also limit the number of related apps checked to limit the
+amount of fingerprinting information exposed to websites.
+
+The User Agent must not return installed applications when running in a privacy
 preserving mode, for example Incognito in Chrome or Private Browsing in Firefox.
 
 # Abuse Considerations

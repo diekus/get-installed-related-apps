@@ -1215,7 +1215,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
   <meta content="Bikeshed version c80088ef848c5e5446a2eaced80623027d194593" name="generator">
   <link href="https://wicg.github.io/get-installed-related-apps/spec/" rel="canonical">
-  <meta content="ae6073fcf5f78d1d608445aec0c6f6f53b5c3a92" name="document-revision">
+  <meta content="a2eba4f2d1ce09533286dcd2aa9189e73c9ed4cc" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1575,6 +1575,7 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
    <h2 class="heading settled" data-level="2" id="privacy-considerations"><span class="secno">2. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy-considerations"></a></h2>
    <p>This feature only works in secure contexts. This ensures that the website cannot be spoofed, and that the association between the site and application is valid.</p>
    <p>The association between the web app and its counterpart is bidirectional, meaning that the web app has to declare its association with the related app, and the related app has to declare its association with the web app. This prevents malicious websites from fingerprinting users and getting a list of their installed applications.</p>
+   <p>The user agent MAY limit the number of related applications to be matched, to limit fingerprinting.</p>
    <p>The user agent MUST NOT return installed applications when running in a privacy preserving mode, for example Incognito in Chrome or Private Browsing in Firefox.</p>
    <h2 class="heading settled" data-level="3" id="infrastructure"><span class="secno">3. </span><span class="content">Infrastructure</span><a class="self-link" href="#infrastructure"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="infra-platform"><span class="secno">3.1. </span><span class="content">Platform</span><a class="self-link" href="#infra-platform"></a></h3>
@@ -1669,6 +1670,15 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
          <p>Let <var>manifest</var> and <var>manifestURL</var> be the results of <a data-link-type="dfn" href="https://www.w3.org/TR/appmanifest/#obtaining" id="ref-for-obtaining">obtaining the manifest</a>. If this fails, <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide/#resolve-promise" id="ref-for-resolve-promise">resolve</a> promise with an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list③">list</a> and abort these steps.</p>
         <li data-md>
          <p>Let <var>relatedApplications</var> be <var>manifest</var>’s <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/appmanifest/#dom-webappmanifest-related_applications" id="ref-for-dom-webappmanifest-related_applications">related_applications</a></code>.</p>
+        <li data-md>
+         <p>Optionally:</p>
+         <ol>
+          <li data-md>
+           <p>Let <var>maxRelatedApps</var> be a user agent determined number.</p>
+          <li data-md>
+           <p>If <var>relatedApplications</var>’ <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-size" id="ref-for-list-size">size</a> is greater than <var>maxRelatedApps</var>, truncate <var>relatedApplications</var> to a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-size" id="ref-for-list-size①">size</a> of <var>maxRelatedApps</var>.</p>
+         </ol>
+         <p class="note" role="note"><span>Note:</span> This limits how many native applications a website can know are installed. The extra items need to be truncated so the same <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/appmanifest/#dom-externalapplicationresource" id="ref-for-dom-externalapplicationresource②">ExternalApplicationResource</a></code>s are returned every time.</p>
         <li data-md>
          <p>Let <var>installedApps</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list④">list</a>.</p>
         <li data-md>
@@ -1882,6 +1892,7 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
    <ul>
     <li><a href="#ref-for-dom-externalapplicationresource">4.1. Match an installed app</a>
     <li><a href="#ref-for-dom-externalapplicationresource①">5.1. RelatedApplication</a>
+    <li><a href="#ref-for-dom-externalapplicationresource②">5.2.1. getInstalledRelatedApps()</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dom-fingerprint">
@@ -2030,6 +2041,12 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
     <li><a href="#ref-for-ordered-set">3.2. Installed App</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-list-size">
+   <a href="https://infra.spec.whatwg.org/#list-size">https://infra.spec.whatwg.org/#list-size</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-list-size">5.2.1. getInstalledRelatedApps()</a> <a href="#ref-for-list-size①">(2)</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-a-new-promise">
    <a href="https://www.w3.org/2001/tag/doc/promises-guide/#a-new-promise">https://www.w3.org/2001/tag/doc/promises-guide/#a-new-promise</a><b>Referenced in:</b>
    <ul>
@@ -2141,6 +2158,7 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
      <li><span class="dfn-paneled" id="term-for-list" style="color:initial">list</span>
      <li><span class="dfn-paneled" id="term-for-ordered-map" style="color:initial">map</span>
      <li><span class="dfn-paneled" id="term-for-ordered-set" style="color:initial">set</span>
+     <li><span class="dfn-paneled" id="term-for-list-size" style="color:initial">size</span>
     </ul>
    <li>
     <a data-link-type="biblio">[promises-guide]</a> defines the following terms:
