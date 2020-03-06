@@ -6,11 +6,12 @@ match that of corresponding native apps. The situation of users having a web
 app and the corresponding native app both installed on the same device will
 become more common, and the feature sets of these apps will converge.
 
-It is important to allow apps to detect this situation to allow them to disable 
-functionality that should be provided by the other app.
+It is important to allow websites to detect if an app is installed, whether a
+native app or a web app, to allow them to disable functionality that should be
+provided by the other app.
 
-The GetInstalledRelatedApps API allows web apps to detect if related native apps
-are installed on the current device.
+The GetInstalledRelatedApps API allows web apps to detect if related apps are
+installed on the current device.
 
 # Querying the installed local apps that specify the website.
 
@@ -29,11 +30,11 @@ for (const app of listOfInstalledApps) {
 }
 ```
 
-# Describing a relationship from native application to website (and vice versa)
+# Describing a relationship from an application to website (and vice versa)
 This API is being developed with the assumption that a system exists to create
-associations from applications to web applications.
+associations from installed applications to websites.
 
-We can define relationships between a web application and other applications by
+We can define relationships between a wensite and other applications by
 using the "related_applications" member of the web application manifest.
 
 Example:
@@ -55,6 +56,10 @@ Example:
     {
       "platform": "itunes",
       "url": "https://itunes.apple.com/app/example-app1/id123456789"
+    },
+    {
+      "platform": "webapp",
+      "url": "https://example.com/manifest.json"
     }
   ]
 }

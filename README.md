@@ -1,9 +1,9 @@
 # Get Installed Related Apps API
 
-**Date**: 2019-10-15
+**Date**: 2020-03-06
 
 This site details a proposal to add an API to the web for determining if related
-native apps are installed:
+apps are installed:
 
 ```js
 const listOfInstalledApps = await navigator.getInstalledRelatedApps();
