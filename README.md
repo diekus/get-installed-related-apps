@@ -9,8 +9,8 @@ apps are installed:
 const listOfInstalledApps = await navigator.getInstalledRelatedApps();
 ```
 
-* [Explainer document](EXPLAINER.md), a high-level overview of the proposal.
-* [Spec](spec/index.html), the specification.
+* [Explainer document](https://github.com/WICG/get-installed-related-apps/blob/main/EXPLAINER.md), a high-level overview of the proposal.
+* [Spec](https://wicg.github.io/get-installed-related-apps/spec/), the specification.
 
 ## Licensing and contributions
 
