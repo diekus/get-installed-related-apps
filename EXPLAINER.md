@@ -35,7 +35,7 @@ This API is being developed with the assumption that a system exists to create
 associations from installed applications to websites.
 
 We can define relationships between a wensite and other applications by
-using the "related_applications" member of the web application manifest.
+using the `"related_applications"` member of the web application manifest.
 
 Example:
 ```json
@@ -110,4 +110,4 @@ Another abuse concern is that web applications might use this API to drive
 users away from a web environment, to the native counterpart. Although this
 practice already exists in the wild, User Agent should be wary of this
 potential abuse vector. Note that this is why no installed applications must be
-returned when running in in a privacy preserving mode.
+returned when running in a privacy preserving mode.
