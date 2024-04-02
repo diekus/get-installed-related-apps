@@ -73,7 +73,7 @@ In Android, the
 system can be used to define an association between a website and an application.
 If the application is installed locally and defines an association with the
 requesting web application, we return the app as defined in the
-"related_applications" member. 
+"related_applications" member.
 
 ## Desktop platforms
 
@@ -82,9 +82,11 @@ For installed PWAs on desktop platforms (Windows/Linux/macOS), the PWA must list
 ## Out of scope web sites
 
 An out-of-scope site can also be associated to an installed PWA. The bidirectional association for this scenario consists of:
-* PWA -> web site: the web   
+* **PWA -> web site**: the PWA gets an association file in its `./wellknown/` directory of the domain where the PWA lives.
+    * *Android*: the association is created via the `assetlinks.json` file.
+    * *Windows*: the association is created with an `web-app-origin-association` file. 
 
-* Web site -> PWA: a web manifest file gets added to the web site with a `related_applications` field that points to the PWA.
+* **Web site -> PWA**: a web manifest file gets added to the web site with a `related_applications` field that points to the PWA's manifest file.
 
 # Privacy Considerations
 This feature only works with sites using HTTPS. This ensures that the website
